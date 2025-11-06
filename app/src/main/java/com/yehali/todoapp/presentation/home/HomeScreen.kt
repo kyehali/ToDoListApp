@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -204,6 +203,7 @@ fun HomeScreen(
                     Spacer(modifier = Modifier.height(8.dp))
                     CompletionCard(
                         percentage = state.completedPercentage,
+                        isFiltered = state.filterType != FilterType.ALL || state.filterDate != null,
                         modifier = Modifier.fillMaxWidth()
                     )
                     Spacer(modifier = Modifier.height(16.dp))
@@ -255,7 +255,7 @@ fun HomeScreen(
 }
 
 @Composable
-fun CompletionCard(percentage: Int, modifier: Modifier = Modifier) {
+fun CompletionCard(percentage: Int, isFiltered: Boolean,modifier: Modifier = Modifier) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
@@ -270,7 +270,7 @@ fun CompletionCard(percentage: Int, modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Today's Completion",
+                text = if (isFiltered) "Completion" else "Today's Completion",
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onPrimaryContainer
             )

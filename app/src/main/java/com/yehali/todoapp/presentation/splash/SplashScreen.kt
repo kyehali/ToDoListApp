@@ -62,7 +62,7 @@ fun SplashScreen(
             Text(
                 text = "ToDo Time",
                 fontSize = 48.sp,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.ExtraBold,
                 color = Color.White,
                 letterSpacing = 2.sp
             )
@@ -74,7 +74,7 @@ fun SplashScreen(
                 text = " Organize your day ",
                 fontSize = 16.sp,
                 color = Color.White.copy(alpha = 0.9f),
-                fontWeight = FontWeight.Light
+                fontWeight = FontWeight.Bold
             )
         }
     }

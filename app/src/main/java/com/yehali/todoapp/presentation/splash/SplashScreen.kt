@@ -37,7 +37,7 @@ fun SplashScreen(
     // Trigger animation and navigate after delay
     LaunchedEffect(key1 = true) {
         startAnimation = true
-        delay(2500) // Show splash for 2.5 seconds
+        delay(2500)
         onTimeout()
     }
     Box(
@@ -46,9 +46,9 @@ fun SplashScreen(
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
-                        Color(0xFFE1BEE7), // Light purple
-                        Color(0xFFCE93D8), // Medium purple
-                        Color(0xFFBA68C8)  // Darker purple
+                        Color(0xFFE1BEE7),
+                        Color(0xFFCE93D8),
+                        Color(0xFFBA68C8)
                     )
                 )
             ),

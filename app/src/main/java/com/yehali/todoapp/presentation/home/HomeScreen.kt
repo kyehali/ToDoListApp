@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.yehali.todoapp.presentation.components.TaskSection
 import android.app.DatePickerDialog
+import androidx.compose.runtime.saveable.rememberSaveable
 import java.util.Calendar
 
 
@@ -71,7 +72,7 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    var showFilterMenu by remember { mutableStateOf(false) }
+    var showFilterMenu by rememberSaveable { mutableStateOf(false) }
     val context = LocalContext.current
     val showClearButtonOnToday = state.todayTasks.isNotEmpty() && (state.filterType != FilterType.ALL || state.filterDate != null)
     val showClearButtonOnTomorrow = state.todayTasks.isEmpty() && state.tomorrowTasks.isNotEmpty() && (state.filterType != FilterType.ALL || state.filterDate != null)
@@ -100,7 +101,6 @@ fun HomeScreen(
                         expanded = showFilterMenu,
                         onDismissRequest = { showFilterMenu = false }
                     ) {
-                        // Completed Tasks Option
                         DropdownMenuItem(
                             text = {
                                 Text(
@@ -120,8 +120,6 @@ fun HomeScreen(
                                 )
                             }
                         )
-
-                        // Uncompleted Tasks Option
                         DropdownMenuItem(
                             text = {
                                 Text(
@@ -144,7 +142,6 @@ fun HomeScreen(
 
                         Divider()
 
-                        // Date Filter Option
                         DropdownMenuItem(
                             text = {
                                 Text(
@@ -203,7 +200,6 @@ fun HomeScreen(
                     .padding(horizontal = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                // Completion percentage card
                 item {
                     Spacer(modifier = Modifier.height(8.dp))
                     CompletionCard(
@@ -213,7 +209,6 @@ fun HomeScreen(
                     Spacer(modifier = Modifier.height(16.dp))
                 }
 
-                // Today's tasks
                 item {
                     TaskSection(
                         title = "Today",

@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -46,7 +48,8 @@ fun AddEditTaskScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(16.dp),
+                .padding(16.dp)
+            .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             // Title field
@@ -58,7 +61,6 @@ fun AddEditTaskScreen(
                 singleLine = true
             )
 
-            // Description field
             OutlinedTextField(
                 value = state.description,
                 onValueChange = { viewModel.onDescriptionChange(it) },
@@ -68,8 +70,6 @@ fun AddEditTaskScreen(
                     .height(150.dp),
                 maxLines = 5
             )
-
-            // Due date picker
             OutlinedButton(
                 onClick = {
                     val calendar = Calendar.getInstance()
@@ -97,7 +97,7 @@ fun AddEditTaskScreen(
                 Text(formatDate(state.dueDate))
             }
 
-            Spacer(modifier = Modifier.weight(1f))
+            Spacer(modifier = Modifier.height(24.dp))
 
             // Save button
             Button(
@@ -109,6 +109,7 @@ fun AddEditTaskScreen(
             ) {
                 Text("Save Task")
             }
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }

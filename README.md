@@ -7,11 +7,15 @@ This To-Do List Android application allows users to efficiently manage their dai
 🛠️ Setup and Installation Instructions
 
 Prerequisites
+
+
     1. Android Studio (latest version recommended)
     2. Gradle (automatically managed by Android Studio)
     3. JDK 17 or higher
     4. Internet connection for dependency downloads
+    
 Steps to Run the Project
+
     1. Clone or download the project from the repository:
        git clone https://github.com/your-repo/todoapp.git
     2. Open the project in Android Studio.
@@ -23,6 +27,7 @@ Steps to Run the Project
 Architecture & Platform Choice
 
 The app uses MVVM architecture for clean separation of concerns and easy testing.
+
       1. Model: Task data class and TaskRepository for data management.
       2. ViewModel: HomeViewModel,AddEditViewModel for handling logic and UI state with StateFlow.
       3. View: Composable UI built with Jetpack Compose.
@@ -32,6 +37,7 @@ Why Kotlin & Compose:
       Modern, concise, reactive, and ideal for scalable Android app development.
 
 Challenges & Solutions
+
       1. Challenge: Writing tests for the first time.
       2. Solution: Learned JUnit and Espresso testing through tutorials, practiced testing repository and ViewModel logic, and gradually built confidence in testing.
 
